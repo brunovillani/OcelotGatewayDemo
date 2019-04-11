@@ -26,6 +26,18 @@
       "UpstreamHttpMethod": [ "Get" ],
       "Key": "user-profile"
     },
+    {
+      "DownstreamPathTemplate": "/api/user/token",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 52792
+        }
+      ],
+      "UpstreamPathTemplate": "/api/user/token",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
     // Catalog Service Route
     {
       "DownstreamPathTemplate": "/api/product/",
@@ -37,6 +49,22 @@
         }
       ],
       "UpstreamPathTemplate": "/api/product/",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/product/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 52791
+        }
+      ],
+      "UpstreamPathTemplate": "/api/product/{id}",
       "UpstreamHttpMethod": [ "Get" ]
     },
     // Transaction Service Route
@@ -89,6 +117,8 @@
       "QuotaExceededMessage": "Customize Tips!",
       "HttpStatusCode": 999,
       "ClientIdHeader": "Test"
-    }
+    },
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration"
   }
 }

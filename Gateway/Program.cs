@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Ocelot.Middleware;
-using Ocelot.DependencyInjection;
 
 namespace Gateway
 {
@@ -21,14 +19,6 @@ namespace Gateway
                           {
                               config.AddJsonFile("ocelot.json")
                               .AddEnvironmentVariables();
-                          })
-                          .ConfigureServices(s =>
-                          {
-                              s.AddOcelot();
-                          })
-                          .Configure(app =>
-                          {
-                              app.UseOcelot().Wait();
                           })
                           .ConfigureLogging((hostingContext, logging) =>
                           {
